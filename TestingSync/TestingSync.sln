@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{7A4FF852-169F-4530-B5FB-E5DFDB109BED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingSync", "TestingSync\TestingSync.csproj", "{D8D6A73E-C96F-44A2-82A1-0B1889C14544}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A4FF852-169F-4530-B5FB-E5DFDB109BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A4FF852-169F-4530-B5FB-E5DFDB109BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A4FF852-169F-4530-B5FB-E5DFDB109BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A4FF852-169F-4530-B5FB-E5DFDB109BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D6A73E-C96F-44A2-82A1-0B1889C14544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D6A73E-C96F-44A2-82A1-0B1889C14544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D6A73E-C96F-44A2-82A1-0B1889C14544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D6A73E-C96F-44A2-82A1-0B1889C14544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
