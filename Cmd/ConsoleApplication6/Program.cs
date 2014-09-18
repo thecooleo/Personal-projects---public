@@ -14,15 +14,15 @@ namespace ConsoleApplication6
             Console.WriteLine("Enter a command: ");
             String command = Console.ReadLine();
             //create 2 strings, first is useless, second just re formats the first, couldnt get it to work without doing this. will work on making more efficiant later. :c
-            String create = command.Substring(command.IndexOf(" "), command.Length - 6), delete = create.Substring(1, create.Length - 1);
+            String start = command.Substring(0, command.IndexOf(" ")), end = command.Substring(command.IndexOf(" ") + 1);
 
             // checks users command for KW
-            if (command.Substring(0, command.IndexOf(" ")).Equals("create"))
+            if (start.Equals("create"))
             {
                 try
                 {
-                    File.Create(create);
-                    Console.WriteLine("You have success fully created :" + delete);
+                    File.Create(end);
+                    Console.WriteLine("You have success fully created :" + end);
                 }
                 catch (Exception i)
                 {
@@ -30,15 +30,12 @@ namespace ConsoleApplication6
                 }
 
             }
-            else if (command.Substring(0, command.IndexOf(" ")).Equals("delete"))
+            else if (start.Equals("delete"))
             {
                 try
                 {
-                    String s = "C:\\Users\\brodie\\desktop\\" + delete;
-                    
-
-                    File.Delete(s);
-                    Console.WriteLine("File succefully delteted: " + delete);
+                    File.Delete("C:\\Users\\brodie\\desktop\\" + end);
+                    Console.WriteLine("File succefully delteted: " + end);
                 }
                 catch (Exception zzz)
                 {
