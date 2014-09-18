@@ -17,9 +17,9 @@ namespace ConsoleApplication6
                 // promts the user for a command and grabs input
                 Console.WriteLine("Enter a command: ");
                 String command = Console.ReadLine();
-                
-                String start="",end="";
-                
+
+                String start = "", end = "";
+
                 if (command.Equals("end"))
                 {
                     break;
@@ -32,9 +32,9 @@ namespace ConsoleApplication6
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Please enter a command following required syntax.\n exception: "+e);
+                    Console.WriteLine("Please enter a command following required syntax.\n exception: " + e);
                 }
-               
+
                 // checks users command for KW
                 if (start.Equals("create"))
                 {
@@ -61,8 +61,8 @@ namespace ConsoleApplication6
                     {
                         Console.WriteLine("File does not exist");
                     }
-                    
-                   
+
+
 
                 }
                 else if (start.Equals("open"))
@@ -76,7 +76,7 @@ namespace ConsoleApplication6
                         Console.WriteLine(exc);
                     }
                 }
-                
+
 
 
 
