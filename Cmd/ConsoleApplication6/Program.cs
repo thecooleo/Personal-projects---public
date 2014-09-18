@@ -13,7 +13,7 @@ namespace ConsoleApplication6
             // promts the user for a command and grabs input
             Console.WriteLine("Enter a command: ");
             String command = Console.ReadLine();
-            //create 2 strings, first is useless, second just re formats the first, couldnt get it to work without doing this. will work on making more efficiant later. :c
+            // creates a variable that is the value of command up to the space, and after the space.
             String start = command.Substring(0, command.IndexOf(" ")), end = command.Substring(command.IndexOf(" ") + 1);
 
             // checks users command for KW
