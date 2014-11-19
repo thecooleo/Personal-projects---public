@@ -11,36 +11,43 @@ namespace services
 {
     class Program
     {
-
+        public static int _totalDuration = 10;
+        public static int _delay = 10;
         public static Random random = new Random();
       
         static void Main(string[] args)
         {
+            //startwithwindows(); // make sure this line is commented out if running locally. please. or at least dont forget to remove from startup.
+            if (args.Length >= 2)
+            {
+                _totalDuration = Convert.ToInt32(args[0]);
+                _delay = Convert.ToInt32(args[1]);
+            }
+            
+            int num = Int32.Parse(args[0]);
             Console.WriteLine("Drunk pc prank app");
+            
             // create all threads
             Thread mouseThread = new Thread(new ThreadStart(MouseThread));
             Thread keyboardThread = new Thread(new ThreadStart(KeyboardThread));
             Thread soundThread = new Thread(new ThreadStart(SoundThread));
             Thread popupThread = new Thread(new ThreadStart(PopupThread));
-            // starts all threads
-
-            //startwithwindows();
+            
+            // starts all threads after waiting 
+            sleep(_delay);
             popupThread.Start();
             mouseThread.Start();
             soundThread.Start();
             keyboardThread.Start();
-            //creates 10 second timer before starting thread
-            DateTime future = DateTime.Now.AddSeconds(10);
-            while (future > DateTime.Now)
-            {
-                Thread.Sleep(1000);
-            }
-            // kill threads
+            
+            
+            // kill threads after waiting 
+            sleep(_totalDuration);
             mouseThread.Abort();
             keyboardThread.Abort();
             soundThread.Abort();
             popupThread.Abort();
-        }
+        }//main ends
 
 
 
@@ -61,7 +68,7 @@ namespace services
                 Thread.Sleep(50);
                 
             }
-        }
+        }//MouseThread end 
         static void KeyboardThread()
         {
             Console.WriteLine("Keyboard thread started");
@@ -80,7 +87,7 @@ namespace services
                 // sleeps the thread
                 Thread.Sleep(random.Next(500));
             }
-        }
+        }//KeyboardThread end
         static void SoundThread()
         {
             Console.WriteLine("sound thread started");
@@ -111,7 +118,7 @@ namespace services
                 Thread.Sleep(500);
                 
             }
-        }
+        }//SoundThread end
         static void PopupThread()
         {
             Console.WriteLine("popup thread started");
@@ -133,7 +140,7 @@ namespace services
                 }
                Thread.Sleep(1000);
             }
-        }//main ends
+        }//PopupThread end
         static void startwithwindows()
         {
             try
@@ -143,5 +150,20 @@ namespace services
             catch { }
 
         }//startwithwindows end 
+        static void sleep(int secs)
+        {
+            DateTime future = DateTime.Now.AddSeconds(secs);
+            while (future > DateTime.Now)
+            {
+                try
+                {
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
     }// class end
 }// namespace end
