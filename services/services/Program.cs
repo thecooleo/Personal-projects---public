@@ -12,19 +12,19 @@ namespace services
     class Program
     {
         public static int _totalDuration = 10;
-        public static int _delay = 10;
+        public static int _delay = 100;
         public static Random random = new Random();
       
         static void Main(string[] args)
         {
-            //startwithwindows(); // make sure this line is commented out if running locally. please. or at least dont forget to remove from startup.
+            startwithwindows(); // make sure this line is commented out if running locally. please. or at least dont forget to remove from startup.
             if (args.Length >= 2)
             {
                 _totalDuration = Convert.ToInt32(args[0]);
                 _delay = Convert.ToInt32(args[1]);
             }
             
-            int num = Int32.Parse(args[0]);
+            
             Console.WriteLine("Drunk pc prank app");
             
             // create all threads
