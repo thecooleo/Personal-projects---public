@@ -16,56 +16,83 @@ namespace crazy_8s
         {
 
             //create the arrays of each suit
-            int[] hearts = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, };
-            int[] diamonds = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, };
-            int[] clubs = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, };
-            int[] spade = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, };
+            int[] hearts = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            int[] diamonds = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            int[] clubs = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            int[] spade = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
             //create the deck
             int[][] cards = { hearts, diamonds, clubs, spade };
 
             //calls methods to get adn output the players hand. send which array you want to modify, they are global arrays.
             handoutcards(cards, player2, suitp2);
-            sortcards(player2);
+            sortcards(player2,0,player2.Length-1);
             outputcards(player2, suitp2);
 
 
-            handoutcards(cards, player1, suitp1);
-            sortcards(player1);
-            outputcards(player1, suitp1);
+            //handoutcards(cards, player1, suitp1);
+            //sortcards(player1);
+            //outputcards(player1, suitp1);
 
             //read so the consol doesnt close. ghetto fix but works c:
             Console.Read();
         }
 
         // one of the sort methods we used in levacs class
-        public static void sortcards(int[] A)
+        public static void sortcards(int[] elements,int left,int right)
         {
 
-            for (int n = 1; n <= A.Length - 1; n++)
+            int i = left, j = right;
+            int pivot = elements[(left + right) / 2];
+
+            while (i <= j)
             {
-                int temp = A[n];
-                int j = n - 1;
-                while (j >= 0 && A[j] > temp)
+                while (elements[i].CompareTo(pivot) < 0)
                 {
-                    A[j + 1] = A[j];
+                    i++;
+                }
+
+                while (elements[j].CompareTo(pivot) > 0)
+                {
                     j--;
                 }
-                A[j + 1] = temp;
+
+                if (i <= j)
+                {
+                    // Swap
+                    int tmp = elements[i];
+                    elements[i] = elements[j];
+                    elements[j] = tmp;
+
+                    i++;
+                    j--;
+                }
+            }///while
+
+            // Recursive calls
+            if (left < j)
+            {
+                sortcards(elements, left, j);
+            }
+
+            if (i < right)
+            {
+                sortcards(elements, i, right);
             }
         }
 
 
-        //
+        
         private static void handoutcards(int[][] cards, int[] player, string[] suit)
         {
-
+            int temp;
+            int temp2;
             Random random = new Random();
             for (int i = 0; i < player.Length; i++)
             {
 
                 //create two random intigers storing them in variables
-                int temp = random.Next(4);
-                int temp2 = random.Next(13);
+                temp = random.Next(4);
+                temp2 = random.Next(13);
 
                 // for use in while loop
                 bool handed = false;
@@ -75,13 +102,20 @@ namespace crazy_8s
                 {
 
                     // 0 is the default value for a card that has been handed out. 
-                    if (!(cards[temp][temp2] == 0))
+                    if (cards[temp][temp2] == 0)
                     {
-
+                        // if the card the randoms chose is used, re roll duh card. niiiiigaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        temp = random.Next(4);
+                        temp2 = random.Next(13);
+                        Console.WriteLine("pooooop on s stick BOIS");
+                       
+                    }
+                    else
+                    {
                         player[i] = cards[temp][temp2];
                         cards[temp][temp2] = 0;
-                        
-                        
+
+
                         // choose the suit of the card
                         if (temp == 0)
                         {
@@ -102,13 +136,8 @@ namespace crazy_8s
 
                         handed = true;
                         
-                    }
-                    else if (cards[temp][temp2]==0)
-                    {
-                        // if the card the randoms chose is used, re roll duh card. niiiiigaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        temp = random.Next(4);
-                        temp2 = random.Next(13);
-                        Console.WriteLine("pooooop on s stick BOIS");
+                        
+                        
                     }
                 }///while loop
             }///forloop
