@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Threading;
 namespace crazy_8s
 {
-    class Program
-    {
+    class Program{
+        public static int facecardnum;
+        public static String facecardsuit;
+    
         public static int[] player1 = new int[8];
         public static string[] suitp1 = new string[8];
         public static int[] player2 = new int[8];
@@ -23,16 +25,12 @@ namespace crazy_8s
             //create the deck
             int[][] cards = { hearts, diamonds, clubs, spade };
 
-            //calls methods to get adn output the players hand. send which array you want to modify, they are global arrays.
-            handoutcards(cards, player2, suitp2);
-            sortcards(player2,0,player2.Length-1);
-            outputcards(player2, suitp2);
-
-
-            //handoutcards(cards, player1, suitp1);
-            //sortcards(player1);
-            //outputcards(player1, suitp1);
-
+            begin(cards);
+            
+            
+            
+            
+            
             //read so the consol doesnt close. ghetto fix but works c:
             Console.Read();
         }
@@ -82,70 +80,9 @@ namespace crazy_8s
 
 
         
-        private static void handoutcards(int[][] cards, int[] player, string[] suit)
-        {
-            int temp;
-            int temp2;
-            Random random = new Random();
-            for (int i = 0; i < player.Length; i++)
-            {
+        
 
-                //create two random intigers storing them in variables
-                temp = random.Next(4);
-                temp2 = random.Next(13);
-
-                // for use in while loop
-                bool handed = false;
-
-                //while loop where the player actually gets his card
-                while (handed==false)
-                {
-
-                    // 0 is the default value for a card that has been handed out. 
-                    if (cards[temp][temp2] == 0)
-                    {
-                        // if the card the randoms chose is used, re roll duh card. niiiiigaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        temp = random.Next(4);
-                        temp2 = random.Next(13);
-                        Console.WriteLine("pooooop on s stick BOIS");
-                       
-                    }
-                    else
-                    {
-                        player[i] = cards[temp][temp2];
-                        cards[temp][temp2] = 0;
-
-
-                        // choose the suit of the card
-                        if (temp == 0)
-                        {
-                            suit[i] = "spades";
-                        }
-                        else if (temp == 1)
-                        {
-                            suit[i] = "clubs";
-                        }
-                        else if (temp == 2)
-                        {
-                            suit[i] = "diamonds";
-                        }
-                        else if (temp == 3)
-                        {
-                            suit[i] = "hearts";
-                        }
-
-                        handed = true;
-                        
-                        
-                        
-                    }
-                }///while loop
-            }///forloop
-
-
-        }///handoutcards function
-
-        private static void outputcards(int[] player, string[] suit)
+        public static void outputcards(int[] player, string[] suit)
         {
             for (int i = 0; i < player1.Length; i++)
             {
@@ -173,5 +110,25 @@ namespace crazy_8s
             }
 
         }///outputcards function
+
+        public static void begin(int[][] cards)
+        {
+            Console.WriteLine("ONLY PLAYER 1 LOOK AT THE SCREEN FOR NEXT 10 SECONDS!");
+            dealer.handoutcards(cards, player1, suitp1);
+            sortcards(player1, 0, player1.Length - 1);
+            outputcards(player1, suitp1);
+
+            Console.WriteLine("THESE ARE YOUR CARDS PLAYER 1. ");
+            Thread.Sleep(5000);
+            Console.Clear();
+            Console.WriteLine("ONLY PLAYER 2 LOOK AT THE SCREEN FOR NEXT 10 SECONDS!");
+            dealer.handoutcards(cards, player2, suitp2);
+            sortcards(player2, 0, player2.Length - 1);
+            outputcards(player2, suitp2);
+
+            Console.WriteLine("THESE ARE YOUR CARDS PLAYER 2. ");
+            Thread.Sleep(5000);
+            Console.Clear();
+        }
     }///program class
 }///namespace
