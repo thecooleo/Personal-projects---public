@@ -17,8 +17,9 @@ namespace ConsoleApplication4
             //System.out.println("");
             Console.WriteLine("this is how you print a line in c#");
 
-            //Scanner in = new Scanner(System.in);
-            //float f = in.nextFloat();
+            //how to gain input from the user
+            //if you were gaining input for a String, you would not have to convert. if it was a double, do Convert.toDouble instead
+            
             int f = Convert.ToInt32(Console.ReadLine());
             // Convert.toInt32 changes the input from String to integer value.
             //Consol.ReadLine() grabs String input from the user, dont type .read or you will get a binary equvilant to what they type in
