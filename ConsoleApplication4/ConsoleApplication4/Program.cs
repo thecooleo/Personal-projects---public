@@ -26,6 +26,7 @@ namespace ConsoleApplication4
             
             
             bool z = (3 > 2);
+            //in java this would be boolean z = (2>3);
             // booleans are bools in c#. Deal with it. (this is the same as saying flase, 3>2 is evaluated as false and therefore false is assigned to the bool. this only works because of the brackets);
             // would this be evaluated true or false? : 
             
